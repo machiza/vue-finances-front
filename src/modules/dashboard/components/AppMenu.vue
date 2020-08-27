@@ -26,7 +26,7 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title>User Name</v-list-item-title>
+          <v-list-item-title>{{ user.name }}</v-list-item-title>
         </v-list-item-content>
 
         <v-list-item-action>
@@ -71,6 +71,9 @@
 </template>
 
 <script>
+
+import AuthService from '@/modules/auth/services/auth-service'
+
 export default {
   name: 'AppMenu',
   props: {
@@ -80,8 +83,12 @@ export default {
     items: [
       { title: 'Home', icon: 'dashboard', url: '/dashboard', exact: true }
     ],
-    mini: false
-  })
+    mini: false,
+    user: {}
+  }),
+  async created () {
+    this.user = await AuthService.user()
+  }
 }
 </script>
 
