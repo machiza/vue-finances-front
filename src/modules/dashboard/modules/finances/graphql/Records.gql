@@ -25,7 +25,7 @@ query RecordsByMonth (
     category {
       id
       description
-      Operation
+      operation
     }
     user {
       id
