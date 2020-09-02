@@ -1,37 +1,42 @@
 <template>
-  <v-card>
+  <div>
 
-    <v-list
-      two-line
-      subheader
-    >
-      <template v-for="(records, date, index) in mappedRecords">
-        <v-subheader :key="date">{{date}}</v-subheader>
-        <recods-list-item
-          v-for="record in records"
-          :key="record.id"
-          :record="record"
-        />
-        <v-divider
-          v-if="showDivider(index, mappedRecords)"
-          :key="`${date}-${index}`"
-        ></v-divider>
-      </template>
-    </v-list>
+    <toolbar-by-month class="mb-2" />
 
-    <v-footer class="pa-2">
-      <v-col class="text-right">
-        <h3 class="font-weight-light">
-          <span>Saldo do mês</span>
-          <strong
-            class="ml-5"
-            :class="amountColor(totalAmount)"
-          >{{ formatCurrency(totalAmount) }}</strong>
-        </h3>
-      </v-col>
-    </v-footer>
+    <v-card>
 
-  </v-card>
+      <v-list
+        two-line
+        subheader
+      >
+        <template v-for="(records, date, index) in mappedRecords">
+          <v-subheader :key="date">{{date}}</v-subheader>
+          <recods-list-item
+            v-for="record in records"
+            :key="record.id"
+            :record="record"
+          />
+          <v-divider
+            v-if="showDivider(index, mappedRecords)"
+            :key="`${date}-${index}`"
+          ></v-divider>
+        </template>
+      </v-list>
+
+      <v-footer class="pa-2">
+        <v-col class="text-right">
+          <h3 class="font-weight-light">
+            <span>Saldo do mês</span>
+            <strong
+              class="ml-5"
+              :class="amountColor(totalAmount)"
+            >{{ formatCurrency(totalAmount) }}</strong>
+          </h3>
+        </v-col>
+      </v-footer>
+
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -42,11 +47,13 @@ import amountColorMixins from './../mixins/amount-color'
 import formatCurrencyMixins from '@/mixins/format-currency'
 import RecodsListItem from './RecordsListItem.vue'
 import RecordsService from './../services/records-service'
+import ToolbarByMonth from './ToolbarByMonth.vue'
 
 export default {
   name: 'RecordsList',
   components: {
-    RecodsListItem
+    RecodsListItem,
+    ToolbarByMonth
   },
   mixins: [
     amountColorMixins,
