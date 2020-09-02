@@ -9,9 +9,23 @@
 
     <v-card>
 
+      <v-card-text
+        class="text-center"
+        v-if="mappedRecordsLength === 0"
+      >
+        <v-icon
+          size="100"
+          color="grey"
+        >assignment</v-icon>
+        <p class="font-weight-light subtitle-1 grey--text">
+          Nenhum lançamento no período
+        </p>
+      </v-card-text>
+
       <v-list
         two-line
         subheader
+        v-else
       >
         <template v-for="(records, date, index) in mappedRecords">
           <v-subheader :key="date">{{date}}</v-subheader>
@@ -71,6 +85,9 @@ export default {
       return groupBy(this.records, 'date', (record, dateKey) => {
         return moment(record[dateKey]).format('DD/MM/YYYY')
       })
+    },
+    mappedRecordsLength () {
+      return Object.keys(this.mappedRecords).length
     },
     totalAmount () {
       return this.records.reduce((sum, record) => sum + record.amount, 0)
