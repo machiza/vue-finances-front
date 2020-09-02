@@ -17,22 +17,19 @@
 
 <script>
 
+import amountColorMixins from './../mixins/amount-color'
 import formatCurrencyMixins from '@/mixins/format-currency'
 
 export default {
   name: 'RecordsListItem',
   mixins: [
+    amountColorMixins,
     formatCurrencyMixins
   ],
   props: {
     record: Object
   },
   methods: {
-    amountColor (amount) {
-      return amount < 0
-        ? 'error--text text--lighten-1'
-        : 'primary-text text--lighten-1'
-    },
     recordItem (type) {
       return type === 'CREDIT' ? 'arrow_upward' : 'arrow_downward'
     },
