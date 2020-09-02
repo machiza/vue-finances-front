@@ -1,6 +1,8 @@
 <template>
   <div>
 
+    <total-balance class="mb-2" />
+
     <toolbar-by-month
       class="mb-2"
       format="MM-YYYY"
@@ -68,12 +70,14 @@ import formatCurrencyMixins from '@/mixins/format-currency'
 import RecodsListItem from './RecordsListItem.vue'
 import RecordsService from './../services/records-service'
 import ToolbarByMonth from './ToolbarByMonth.vue'
+import TotalBalance from './TotalBalance.vue'
 
 export default {
   name: 'RecordsList',
   components: {
     RecodsListItem,
-    ToolbarByMonth
+    ToolbarByMonth,
+    TotalBalance
   },
   mixins: [
     amountColorMixins,
