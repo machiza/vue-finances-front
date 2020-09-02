@@ -42,10 +42,11 @@ export default {
   name: 'ToolbarByMonth',
   props: {
     color: String,
-    format: String
+    format: String,
+    month: String
   },
   data: () => ({
-    date: moment()
+    date: undefined
   }),
   computed: {
     currentMonth () {
@@ -53,6 +54,7 @@ export default {
     }
   },
   created () {
+    this.setCurrentMonth()
     this.emit()
   },
   methods: {
@@ -66,6 +68,9 @@ export default {
     increment () {
       this.date = this.date.clone().add(1, 'month')
       this.emit()
+    },
+    setCurrentMonth () {
+      this.date = this.month ? moment(this.month, this.format) : moment()
     }
   }
 }
