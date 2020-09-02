@@ -15,7 +15,7 @@
 
       <v-col cols="10">
         <v-toolbar-title class="text-center">
-          <span>{{ currentMonth }}</span>
+          <span class="text-capitalize">{{ currentMonth }}</span>
         </v-toolbar-title>
       </v-col>
 
