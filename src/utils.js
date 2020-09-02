@@ -14,7 +14,7 @@ const formatError = message => {
   return messageSplit[messageSplit.length - 1].trim()
 }
 
-const groupBy = ({ array, key, makeCurrentKey }) => {
+const groupBy = (array, key, makeCurrentKey) => {
   return array.reduce((accumulated, item) => {
     const currentKey = makeCurrentKey(item, key)
     return {
