@@ -9,7 +9,7 @@
       >
         <NumericDisplay
           :color="color"
-          :value="355.57"
+          v-model="$v.record.amount.$model"
         />
       </v-col>
       <v-col

@@ -18,6 +18,7 @@
             :color="color"
             class="subtitle-1"
             block
+            @click="change(btn, 'add')"
           >{{ btn }}</v-btn>
         </v-col>
         <v-col
@@ -27,6 +28,7 @@
           <v-btn
             icon
             block
+            @click="change"
           >
             <v-icon>backspace</v-icon>
           </v-btn>
@@ -56,6 +58,16 @@ export default {
   computed: {
     display () {
       return this.formatCurrency(this.value || 0)
+    }
+  },
+  methods: {
+    change (btnValue, operation) {
+      const currentValue = this.value.toFixed(2)
+      const total =
+        operation === 'add'
+          ? (+(currentValue + btnValue) * 10)
+          : (+currentValue.slice(0, -1) / 10)
+      this.$emit('input', total)
     }
   }
 }
