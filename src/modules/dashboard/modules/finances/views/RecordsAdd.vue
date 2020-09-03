@@ -1,5 +1,24 @@
 <template>
-  <h1>Novo Lançamento</h1>
+  <v-container class="text-center">
+    <v-row class="d-flex flex-row flex-wrap">
+      <v-col
+        cols="12"
+        sm="6"
+        md="4"
+        lg="4"
+      >
+        <p>Amount</p>
+      </v-col>
+      <v-col
+        cols="12"
+        sm="6"
+        md="8"
+        lg="8"
+      >
+        <p>Formulário</p>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
