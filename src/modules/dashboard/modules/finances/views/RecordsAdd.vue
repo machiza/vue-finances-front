@@ -7,7 +7,7 @@
         md="4"
         lg="4"
       >
-        <NumericDisplay :class="color" />
+        <NumericDisplay :color="color" />
       </v-col>
       <v-col
         cols="12"
