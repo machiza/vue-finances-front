@@ -7,7 +7,7 @@
         md="4"
         lg="4"
       >
-        <p>Amount</p>
+        <NumericDisplay :class="color" />
       </v-col>
       <v-col
         cols="12"
@@ -174,9 +174,13 @@ import { mapActions } from 'vuex'
 
 import AccountsService from './../services/accounts-service'
 import CategoriesService from './../services/categories-service'
+import NumericDisplay from './../components/NumericDisplay'
 
 export default {
   name: 'RecordsAdd',
+  components: {
+    NumericDisplay
+  },
   data () {
     return {
       accounts: [],
