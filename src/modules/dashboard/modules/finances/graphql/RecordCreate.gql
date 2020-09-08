@@ -18,7 +18,8 @@ mutation RecordCreate (
     tags: $tags
     note: $note
   ) {
-    IDtype
+    id
+    type
     amount
     date
     description
@@ -27,7 +28,6 @@ mutation RecordCreate (
     account {
       id
       description
-      operation
     }
     user {
       id

@@ -179,6 +179,7 @@ import { mapActions } from 'vuex'
 import AccountsService from './../services/accounts-service'
 import CategoriesService from './../services/categories-service'
 import NumericDisplay from './../components/NumericDisplay'
+import RecordsService from './../services/records-service'
 
 export default {
   name: 'RecordsAdd',
@@ -266,8 +267,14 @@ export default {
       }
       this.setTitle({ title })
     },
-    submit () {
-      console.log('Form: ', this.record)
+    async submit () {
+      try {
+        const record = await RecordsService.createRecord(this.record)
+        console.log('Record: ', record)
+        this.$router.push('/dashboard/records')
+      } catch (error) {
+        console.log('Error creating Record: ', error)
+      }
     }
   }
 }
