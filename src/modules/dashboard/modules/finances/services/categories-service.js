@@ -23,6 +23,7 @@ const createCategory = async variables => {
     update: (proxy, { data: { createCategory } }) => {
       try {
         const variables = { operation: createCategory.operation }
+        console.log(createCategory)
         const data = proxy.readQuery({
           query: CategoriesQuery,
           variables
@@ -36,7 +37,7 @@ const createCategory = async variables => {
           data
         })
       } catch (error) {
-        console.log('Query "accounts" has not been read yet!', error)
+        console.log('Query "categories" has not been read yet!', error)
       }
     }
   })

@@ -200,11 +200,13 @@
         <v-dialog
           v-model="showAccountCategoryDialog"
           max-width="350px"
+          persistent
         >
           <account-category-add
             v-if="showAccountCategoryDialog"
             :entity="entity"
             @close="showAccountCategoryDialog = false"
+            @saved="accountCategorySaved"
           />
         </v-dialog>
 
@@ -283,7 +285,7 @@ export default {
       return moment(this.record.date).format('DD/MM/YYYY')
     }
   },
-  created () {
+  async created () {
     this.changeTitle(this.$route.query.type)
     AccountsService.accounts()
       .subscribe(accounts => (this.accounts = accounts))
@@ -306,6 +308,10 @@ export default {
   },
   methods: {
     ...mapActions(['setTitle']),
+    accountCategorySaved (item) {
+      this.showAccountCategoryDialog = false
+      this.record[`${this.entity}Id`] = item.id
+    },
     add (entity) {
       this.showAccountCategoryDialog = true
       this.entity = entity

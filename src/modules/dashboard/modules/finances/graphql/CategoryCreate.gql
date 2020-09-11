@@ -2,7 +2,7 @@
 
 mutation CategoryCreate (
   $description: String!,
-  $operation: String!
+  $operation: Operation!
 ) {
   createCategory(
     description: $description,
@@ -10,6 +10,7 @@ mutation CategoryCreate (
   ) {
     id
     description
+    operation
     user {
       id
       name
