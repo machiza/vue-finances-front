@@ -76,7 +76,7 @@
                   <v-list-item
                     ripple
                     dense
-                    @click="Sim()"
+                    @click="add('account')"
                   >
                     <v-list-item-action>
                       <v-icon>add</v-icon>
@@ -102,7 +102,7 @@
                   <v-list-item
                     ripple
                     dense
-                    @click="Sim()"
+                    @click="add('category')"
                   >
                     <v-list-item-action>
                       <v-icon>add</v-icon>
@@ -197,6 +197,15 @@
           <v-icon>check</v-icon>
         </v-btn>
 
+        <v-dialog
+          v-model="showAccountCategoryDialog"
+          max-width="350px"
+        >
+          <v-card>
+            <v-card-title>Account or Category</v-card-title>
+          </v-card>
+        </v-dialog>
+
       </v-col>
     </v-row>
   </v-container>
@@ -223,6 +232,7 @@ export default {
       accounts: [],
       categories: [],
       dateDialogValue: moment().format('YYYY-MM-DD'),
+      entity: '',
       record: {
         type: this.$route.query.type.toUpperCase(),
         amount: 0,
@@ -233,6 +243,7 @@ export default {
         tags: '',
         note: ''
       },
+      showAccountCategoryDialog: false,
       showDateDialog: false,
       showTagsInput: false,
       showNoteInput: false
@@ -280,6 +291,10 @@ export default {
   },
   methods: {
     ...mapActions(['setTitle']),
+    add (entity) {
+      this.showAccountCategoryDialog = true
+      this.entity = entity
+    },
     cancelDateDialog () {
       this.showDateDialog = false
       this.dateDialogValue = this.record.date
