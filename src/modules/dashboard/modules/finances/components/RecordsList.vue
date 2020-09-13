@@ -9,7 +9,10 @@
       @month="changeMonth"
       :color="toolbarColor"
       :month="$route.query.month"
-    />
+      :showSlot="true"
+    >
+      <records-filter />
+    </toolbar-by-month>
 
     <v-card>
 
@@ -69,6 +72,7 @@ import { mergeMap } from 'rxjs/operators'
 import { groupBy } from '@/utils'
 import amountColorMixins from './../mixins/amount-color'
 import formatCurrencyMixins from '@/mixins/format-currency'
+import RecordsFilter from './RecordsFilter.vue'
 import RecodsListItem from './RecordsListItem.vue'
 import RecordsService from './../services/records-service'
 import ToolbarByMonth from './ToolbarByMonth.vue'
@@ -77,6 +81,7 @@ import TotalBalance from './TotalBalance.vue'
 export default {
   name: 'RecordsList',
   components: {
+    RecordsFilter,
     RecodsListItem,
     ToolbarByMonth,
     TotalBalance

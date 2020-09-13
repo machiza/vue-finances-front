@@ -13,13 +13,27 @@
         </div>
       </v-col>
 
-      <v-col cols="10">
+      <v-col
+        cols="8"
+        class="offset-1"
+      >
         <v-toolbar-title class="text-center">
           <span class="text-capitalize">{{ currentMonth }}</span>
         </v-toolbar-title>
       </v-col>
 
-      <v-col cols="1">
+      <v-col
+        cols="1"
+        class="text-right"
+        v-if="showSlot"
+      >
+        <slot />
+      </v-col>
+
+      <v-col
+        cols="1"
+        :class="arrowRightClass"
+      >
         <div class="text-right">
           <v-btn
             icon
@@ -43,12 +57,22 @@ export default {
   props: {
     color: String,
     format: String,
-    month: String
+    month: String,
+    showSlot: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => ({
     date: undefined
   }),
   computed: {
+    arrowRightClass () {
+      return !this.showSlot ? 'offset-md-1' : ''
+    },
+    columSize () {
+      return !this.showSlot ? 'md-10' : 'md-9'
+    },
     currentMonth () {
       return this.date.format('MMMM YYYY')
     }
