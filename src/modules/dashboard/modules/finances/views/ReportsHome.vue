@@ -4,6 +4,8 @@
       <toolbar-by-month
         format="MM-YYYY"
         color="primary"
+        :month="month || $route.query.month"
+        @month="changeMonth"
       />
     </v-col>
   </v-row>
@@ -11,7 +13,7 @@
 
 <script>
 
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 import ToolbarByMonth from './../components/ToolbarByMonth'
 
@@ -20,11 +22,22 @@ export default {
   components: {
     ToolbarByMonth
   },
+  computed: {
+    ...mapState('finances', ['month'])
+  },
   created () {
     this.setTitle('Relatórios')
   },
   methods: {
-    ...mapActions(['setTitle'])
+    ...mapActions(['setTitle']),
+    ...mapActions('finances', ['setMonth']),
+    changeMonth (month) {
+      this.$router.push({
+        path: this.$route.path,
+        query: { month }
+      })
+      this.setMonth({ month })
+    }
   }
 }
 </script>
