@@ -1,5 +1,5 @@
 import actions from './actions'
-import mutations from './mutetions'
+import mutations from './mutations'
 
 const state = {
   filters: undefined,
@@ -8,7 +8,7 @@ const state = {
 }
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   actions,
   mutations
