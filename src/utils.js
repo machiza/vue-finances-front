@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const errorHandler = (err, vm, info) => {
   console.log('Vue [error handler]: ', err, info)
   const jwtErrors = ['jwt malformed', 'jwt expired', 'jwt not active', 'invalid token']
@@ -32,6 +33,14 @@ const idx = (object, keyPath) => {
   return keys.reduce(
     (obj, current) => (obj && obj[current] !== undefined) ? obj[current] : null, object
   )
+}
+
+const generateChartConfings = (opts) => {
+  const { type } = opts
+
+  return {
+    type
+  }
 }
 
 const currencyFormatter = ({ locale, currency } = { locale: 'pt-MZ', currency: 'MZN' }) => {
