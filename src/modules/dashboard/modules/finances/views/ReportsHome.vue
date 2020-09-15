@@ -8,6 +8,22 @@
         @month="changeMonth"
       />
     </v-col>
+
+    <v-col
+      v-for="chart in charts"
+      :key="chart.title"
+      cols="12"
+      sm="6"
+      md="6"
+      lg="6"
+      xl="6"
+    >
+      <v-card>
+        <v-card-text>
+          <h2 class="font-weight-light mb-4">{{ chart.title }}</h2>
+        </v-card-text>
+      </v-card>
+    </v-col>
   </v-row>
 </template>
 
@@ -26,6 +42,10 @@ export default {
     ToolbarByMonth
   },
   data: () => ({
+    charts: [
+      { title: 'Receitas vs Despesas' },
+      { title: 'Despesas por Categoria' }
+    ],
     monthSubject$: new Subject(),
     records: [],
     subscriptions: []
