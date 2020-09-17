@@ -35,6 +35,20 @@ const idx = (object, keyPath) => {
   )
 }
 
+const generateChartOptions = (type) => {
+  const scales = {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+
+  return {
+    scales
+  }
+}
+
 const generateChartData = ({ items, keyToGroup, keyOfValue, aliases, type, backgroundColors }) => {
   const grouped = groupBy(items, keyToGroup, idx)
   const response = {}
@@ -62,10 +76,12 @@ const generateChartData = ({ items, keyToGroup, keyOfValue, aliases, type, backg
 const generateChartConfings = (opts) => {
   const { type } = opts
   const data = generateChartData(opts)
+  const options = generateChartOptions(type)
 
   return {
     type,
-    data
+    data,
+    options
   }
 }
 
